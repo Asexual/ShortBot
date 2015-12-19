@@ -1,0 +1,69 @@
+﻿<Window x:Class="ShortBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShortBot"
+        mc:Ignorable="d"
+        Title="ShortBot - Short Url Generator/Indexer" Height="450" Width="670" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btnLoadProxies" Content="Load Proxies" Grid.Column="0" Grid.Row="0" Margin="1,5,0,0" Click="btnLoadProxies_Click" />
+                <Label x:Name="lblProxyCount" Content="0" Grid.Column="1" Grid.Row="0" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Button x:Name="btnLoadUrls" Content="Load URLs" Grid.Column="0" Grid.Row="1" Margin="1,5,0,0" VerticalAlignment="Top" Click="btnLoadUrls_Click" />
+                <Label x:Name="lblUrlCount" Content="0" Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="3.8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Threads:" Grid.Column="0" HorizontalAlignment="Center"/>
+                <Label x:Name="lblThreadCount" Content="1" Grid.Column="2" HorizontalAlignment="Center"/>
+                <Slider x:Name="sliderThreads" Grid.Column="1" Minimum="1" Maximum="300" Value="1" ValueChanged="sliderThreads_ValueChanged" IsSnapToTickEnabled="True"/>
+            </Grid>
+            <Grid Row="2">
+                <RadioButton x:Name="RadioIndexPages" Content="Index Links (Does not work yet)" HorizontalAlignment="Center" />
+            </Grid>
+            <Grid Row="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnStart" Content="Start" Margin="1,5,0,0" Grid.Row="0" Click="btnStart_Click" />
+                    <Button x:Name="btnStop" Content="Stop" Margin="1,5,0,0" Grid.Row="1" VerticalAlignment="Top" Click="btnStop_Click" />
+                    <Button x:Name="btnSave" Content="Save" Margin="1,5,0,0" Grid.Row="2" VerticalAlignment="Top" Click="btnSave_Click"/>
+                </Grid>
+            </Grid>
+            <Grid Row="4">
+                <ListBox x:Name="ListBoxLogs" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </Grid>
+        </Grid>
+
+        <ListBox x:Name="listUrlsCreated" Grid.Column="0" Grid.Row="0"/>
+
+    </Grid>
+</Window>
